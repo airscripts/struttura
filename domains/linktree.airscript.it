@@ -1,0 +1,15 @@
+server {
+  listen 80;
+  listen [::]:80;
+  server_name linktree.airscript.it;
+  return 301 https://linktree.airscript.it;
+}
+
+server {
+  listen 443 ssl;
+  listen [::]:443 ssl;
+  server_name linktree.airscript.it;
+  ssl_certificate /etc/letsencrypt/live/airscript.it/fullchain.pem;
+  ssl_certificate_key /etc/letsencrypt/live/airscript.it/privkey.pem;
+  return 301 https://linktr.ee/airscript;
+}

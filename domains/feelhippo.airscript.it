@@ -1,0 +1,22 @@
+server {
+  listen 80;
+  listen [::]:80;
+  server_name feelhippo.airscript.it;
+
+  location / {
+    proxy_pass http://localhost:8080;
+  }
+}
+
+server {
+  listen 443 ssl;
+  listen [::]:443 ssl;
+  server_name feelhippo.airscript.it;
+  ssl_certificate /etc/letsencrypt/live/airscript.it/fullchain.pem;
+  ssl_certificate_key /etc/letsencrypt/live/airscript.it/privkey.pem;
+
+  location / {
+    proxy_pass http://localhost:8080;
+  }
+}
+
